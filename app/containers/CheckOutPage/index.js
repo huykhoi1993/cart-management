@@ -212,7 +212,10 @@ export function CheckOutPage(props) {
         (a, b) => parseFloat(b.quantity) - parseFloat(a.quantity),
       ),
     ]);
-    setProductRemovedList(preState => [...preState, ...productsRemoved]);
+    setProductRemovedList(preState => [
+      ...preState,
+      ...productsRemoved.filter(product => product.status === 'exist'),
+    ]);
   }, []);
 
   return (
